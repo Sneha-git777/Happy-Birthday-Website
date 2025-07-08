@@ -1,0 +1,527 @@
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  color: #333;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+p {
+  font-size: 1.2em;
+  margin: 20px;
+}
+
+#nextSlide, #surpriseButton {
+  background: #ff69b4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 20px;
+  font-size: 1em;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#surpriseButton {
+  display: none;
+}
+
+.slides-container {
+  max-width: 600px;
+}
+
+.slide {
+  display: none;
+  animation: fade 1s;
+}
+
+.slide.active {
+  display: block;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Cake page */
+.cake-page {
+  background: #fff0f5;
+}
+
+.cake-page {
+  background: #fff0f5;
+}
+
+.cake {
+  position: relative;
+  width: 220px;
+  height: 200px;
+  margin: 40px auto;
+  background: linear-gradient(to bottom, #fffaf0 0%, #ffe4e1 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.layer {
+  position: absolute;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.layer-bottom {
+  height: 70px;
+  background: linear-gradient(#ff69b4, #ff1493);
+  bottom: 0;
+}
+
+.layer-middle {
+  height: 55px;
+  background: linear-gradient(#fff, #ffe4e1);
+  bottom: 70px;
+}
+
+.layer-top {
+  height: 50px;
+  background: linear-gradient(#ff69b4, #ff1493);
+  bottom: 125px;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  box-shadow: inset 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.candles {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  bottom: 180px;
+}
+
+.candle {
+  width: 12px;
+  height: 35px;
+  background: #ffff99;
+  border-radius: 3px;
+  position: relative;
+  box-shadow: inset 0 0 5px #333;
+}
+
+.candle::before {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 18px;
+  background: radial-gradient(circle, orange 40%, transparent 70%);
+  border-radius: 50%;
+  animation: flicker 0.8s infinite alternate;
+}
+
+@keyframes flicker {
+  from { transform: translateX(-50%) scaleY(1); opacity: 1; }
+  to { transform: translateX(-50%) scaleY(1.2); opacity: 0.7; }
+}
+/* Make birthday wishes bold with hearts */
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #e91e63;
+}
+
+p {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #ff1493;
+}
+
+
+/* Confetti celebration */
+.confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+
+/* Slide animation */
+.slide {
+  display: none;
+  animation: fadeSlide 1s ease forwards;
+}
+
+.slide.active {
+  display: block;
+}
+
+/* Fade and slide up */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optionally make hearts bounce inside slides */
+.slide p {
+  position: relative;
+}
+
+.heart {
+  display: inline-block;
+  color: red;
+  animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+.background-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* so you can click buttons! */
+  overflow: hidden;
+  z-index: -1;
+}
+
+.background-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* so you can click buttons! */
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* ❤ Floating scattered hearts background for all slides and cake */
+.floating-hearts {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  pointer-events: none; /* so you can click buttons below */
+  overflow: hidden;
+  z-index: -2; /* keep it behind everything */
+}
+
+.floating-hearts .heart {
+  position: absolute;
+  width: 20px; 
+  height: 20px;
+  background: red;
+  clip-path: polygon(
+    50% 0%,
+    61% 18%,
+    82% 18%,
+    100% 35%,
+    100% 58%,
+    82% 76%,
+    50% 100%,
+    18% 76%,
+    0% 58%,
+    0% 35%,
+    18% 18%,
+    39% 18%
+  );
+  animation: float 20s linear infinite;
+  opacity: 0.8;
+}
+
+/* Vary sizes for a natural look */
+.floating-hearts .heart:nth-child(2n) { width: 15px; height: 15px; }
+.floating-hearts .heart:nth-child(3n) { width: 25px; height: 25px; }
+
+/* Scatter them across the screen with different speeds and delays */
+.floating-hearts .heart:nth-child(1) { left: 2%; animation-duration: 16s; animation-delay: 0s; }
+.floating-hearts .heart:nth-child(2) { left: 5%; animation-duration: 18s; animation-delay: 1s; }
+.floating-hearts .heart:nth-child(3) { left: 8%; animation-duration: 20s; animation-delay: 2s; }
+.floating-hearts .heart:nth-child(4) { left: 12%; animation-duration: 22s; animation-delay: 3s; }
+.floating-hearts .heart:nth-child(5) { left: 15%; animation-duration: 15s; animation-delay: 0.5s; }
+.floating-hearts .heart:nth-child(6) { left: 18%; animation-duration: 17s; animation-delay: 1.5s; }
+.floating-hearts .heart:nth-child(7) { left: 21%; animation-duration: 19s; animation-delay: 2.5s; }
+.floating-hearts .heart:nth-child(8) { left: 25%; animation-duration: 21s; animation-delay: 3.5s; }
+.floating-hearts .heart:nth-child(9) { left: 28%; animation-duration: 14s; animation-delay: 0.2s; }
+.floating-hearts .heart:nth-child(10) { left: 32%; animation-duration: 16s; animation-delay: 1.2s; }
+.floating-hearts .heart:nth-child(11) { left: 35%; animation-duration: 18s; animation-delay: 2.2s; }
+.floating-hearts .heart:nth-child(12) { left: 38%; animation-duration: 20s; animation-delay: 3.2s; }
+.floating-hearts .heart:nth-child(13) { left: 42%; animation-duration: 15s; animation-delay: 0.7s; }
+.floating-hearts .heart:nth-child(14) { left: 45%; animation-duration: 17s; animation-delay: 1.7s; }
+.floating-hearts .heart:nth-child(15) { left: 48%; animation-duration: 19s; animation-delay: 2.7s; }
+.floating-hearts .heart:nth-child(16) { left: 52%; animation-duration: 21s; animation-delay: 3.7s; }
+.floating-hearts .heart:nth-child(17) { left: 55%; animation-duration: 14s; animation-delay: 0.3s; }
+.floating-hearts .heart:nth-child(18) { left: 58%; animation-duration: 16s; animation-delay: 1.3s; }
+.floating-hearts .heart:nth-child(19) { left: 62%; animation-duration: 18s; animation-delay: 2.3s; }
+.floating-hearts .heart:nth-child(20) { left: 65%; animation-duration: 20s; animation-delay: 3.3s; }
+.floating-hearts .heart:nth-child(21) { left: 68%; animation-duration: 15s; animation-delay: 0.6s; }
+.floating-hearts .heart:nth-child(22) { left: 72%; animation-duration: 17s; animation-delay: 1.6s; }
+.floating-hearts .heart:nth-child(23) { left: 75%; animation-duration: 19s; animation-delay: 2.6s; }
+.floating-hearts .heart:nth-child(24) { left: 78%; animation-duration: 21s; animation-delay: 3.6s; }
+.floating-hearts .heart:nth-child(25) { left: 80%; animation-duration: 14s; animation-delay: 0.4s; }
+.floating-hearts .heart:nth-child(26) { left: 83%; animation-duration: 16s; animation-delay: 1.4s; }
+.floating-hearts .heart:nth-child(27) { left: 86%; animation-duration: 18s; animation-delay: 2.4s; }
+.floating-hearts .heart:nth-child(28) { left: 89%; animation-duration: 20s; animation-delay: 3.4s; }
+.floating-hearts .heart:nth-child(29) { left: 92%; animation-duration: 15s; animation-delay: 0.9s; }
+.floating-hearts .heart:nth-child(30) { left: 95%; animation-duration: 17s; animation-delay: 1.9s; }
+.floating-hearts .heart:nth-child(31) { left: 98%; animation-duration: 19s; animation-delay: 2.9s; }
+.floating-hearts .heart:nth-child(32) { left: 1%; animation-duration: 21s; animation-delay: 3.9s; }
+.floating-hearts .heart:nth-child(33) { left: 4%; animation-duration: 13s; animation-delay: 0.1s; }
+.floating-hearts .heart:nth-child(34) { left: 9%; animation-duration: 15s; animation-delay: 1.1s; }
+.floating-hearts .heart:nth-child(35) { left: 14%; animation-duration: 17s; animation-delay: 2.1s; }
+.floating-hearts .heart:nth-child(36) { left: 19%; animation-duration: 19s; animation-delay: 3.1s; }
+.floating-hearts .heart:nth-child(37) { left: 23%; animation-duration: 14s; animation-delay: 0.8s; }
+.floating-hearts .heart:nth-child(38) { left: 27%; animation-duration: 16s; animation-delay: 1.8s; }
+.floating-hearts .heart:nth-child(39) { left: 31%; animation-duration: 18s; animation-delay: 7s; }
+.floating-hearts .heart:nth-child(40) { left: 35%; animation-duration: 20s; animation-delay: 8s; }
+.floating-hearts .heart:nth-child(41) { left: 45%; animation-duration: 20s; animation-delay: 6s; }
+.floating-hearts .heart:nth-child(42) { left: 67%; animation-duration: 20s; animation-delay: 5s; }
+.floating-hearts .heart:nth-child(43) { left: 89%; animation-duration: 20s; animation-delay: 4.8s; }
+.floating-hearts .heart:nth-child(44) { left: 11%; animation-duration: 20s; animation-delay: 3.8s; }
+.floating-hearts .heart:nth-child(45) { left: 18%; animation-duration: 20s; animation-delay: 7s; }
+.floating-hearts .heart:nth-child(46) { left: 40%; animation-duration: 20s; animation-delay: 6s; }
+.floating-hearts .heart:nth-child(47) { left: 58%; animation-duration: 20s; animation-delay: 6s; }
+.floating-hearts .heart:nth-child(48) { left: 99%; animation-duration: 20s; animation-delay: 5s; }
+
+@keyframes float {
+  0% { transform: translateY(100vh) scale(1); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+
+.side-animations .balloon {
+  position: fixed;
+  width: 50px; height: 70px;
+  background: radial-gradient(circle at 30% 30%, #ff69b4, #e91e63);
+  border-radius: 50% 50% 50% 50%;
+  animation: floatSide 6s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+.side-animations .star {
+  position: fixed;
+  width: 30px; height: 30px;
+  background: yellow;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  animation: twinkle 4s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+.side-animations .balloon.left { left: 20px; bottom: 50px; }
+.side-animations .balloon.right { right: 20px; bottom: 50px; }
+.side-animations .star.left { left: 50px; top: 100px; }
+.side-animations .star.right { right: 50px; top: 100px; }
+
+@keyframes floatSide {
+  from { transform: translateY(0); }
+  to { transform: translateY(-30px); }
+}
+
+@keyframes twinkle {
+  from { opacity: 0.5; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.3); }
+}
+
+/* Balloons */
+.side-animations .balloon {
+  position: fixed;
+  width: 50px; height: 70px;
+  background: radial-gradient(circle at 30% 30%, #ff69b4, #e91e63);
+  border-radius: 50%;
+  animation: floatSide 6s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+.side-animations .balloon.small {
+  width: 35px; height: 50px;
+}
+
+.side-animations .balloon.big {
+  width: 70px; height: 90px;
+}
+
+.side-animations .balloon.left { left: 20px; }
+.side-animations .balloon.left.small { left: 60px; bottom: 120px; }
+.side-animations .balloon.left.big { left: 40px; bottom: 250px; }
+
+.side-animations .balloon.right { right: 20px; }
+.side-animations .balloon.right.small { right: 60px; bottom: 120px; }
+.side-animations .balloon.right.big { right: 40px; bottom: 250px; }
+
+/* Stars */
+.side-animations .star {
+  position: fixed;
+  width: 30px; height: 30px;
+  background: gold;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  animation: twinkle 4s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+.side-animations .star.left { left: 40px; top: 50px; }
+.side-animations .star.left.lower { left: 70px; top: 250px; }
+.side-animations .star.left.higher { left: 90px; top: 400px; }
+
+.side-animations .star.right { right: 40px; top: 50px; }
+.side-animations .star.right.lower { right: 70px; top: 250px; }
+.side-animations .star.right.higher { right: 90px; top: 400px; }
+
+/* Gifts */
+.side-animations .gift {
+  position: fixed;
+  width: 40px; height: 40px;
+  background: #ff0000;
+  border: 3px solid gold;
+  border-radius: 5px;
+  animation: floatGift 5s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+.side-animations .gift.left { left: 30px; bottom: 40px; }
+.side-animations .gift.right { right: 30px; bottom: 40px; }
+
+/* Animations */
+@keyframes floatSide {
+  from { transform: translateY(0); }
+  to { transform: translateY(-30px); }
+}
+
+@keyframes twinkle {
+  from { opacity: 0.5; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.3) rotate(15deg); }
+}
+
+@keyframes floatGift {
+  from { transform: translateY(0) rotate(0deg); }
+  to { transform: translateY(-20px) rotate(5deg); }
+}
+/* === Floating Balloons === */
+.floating-balloons {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; /* clickable elements below work */
+  overflow: hidden;
+  z-index: -2; /* behind everything */
+}
+
+.floating-balloons .balloon {
+  position: absolute;
+  border-radius: 50% 50% 50% 50%;
+  opacity: 0.8;
+  animation: floatBalloon 15s linear infinite,
+             sway 3s ease-in-out infinite alternate;
+}
+
+.floating-balloons .balloon::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 30px;
+  background: #555;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+}
+
+/* Use multiple color variations */
+.floating-balloons .balloon:nth-child(3n) {
+  background: radial-gradient(circle at 30% 30%, #ff69b4, #e91e63);
+}
+.floating-balloons .balloon:nth-child(3n+1) {
+  background: radial-gradient(circle at 30% 30%, #87ceeb, #4682b4);
+}
+.floating-balloons .balloon:nth-child(3n+2) {
+  background: radial-gradient(circle at 30% 30%, #98fb98, #3cb371);
+}
+
+/* Float upward */
+@keyframes floatBalloon {
+  0% {
+    transform: translateY(100vh) scale(1);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  100% {
+    transform: translateY(-20vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Sway left and right */
+@keyframes sway {
+  from { transform: translateX(0); }
+  to   { transform: translateX(20px); }
+}
+/* === Floating Balloons Background === */
+.floating-balloons {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1; /* Behind slides but above background */
+}
+
+.floating-balloons .balloon {
+  position: absolute;
+  border-radius: 50% 50% 50% 50%;
+  background: radial-gradient(circle at 30% 30%, var(--balloonColor1), var(--balloonColor2));
+  opacity: 0.9;
+  animation: floatBalloon linear infinite;
+}
+
+@keyframes floatBalloon {
+  0% { transform: translateY(100vh) scale(1); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-20vh) scale(1.1); opacity: 0; }
+}

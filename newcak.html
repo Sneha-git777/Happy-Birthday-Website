@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cake Animation</title>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="cake" id="birthdayCake">
+        <div class="candle"></div>
+        <div class="top-layer"></div>
+        <div class="middle-layer"></div>
+        <div class="bottom-layer"></div>
+      </div>
+    </div>
+  </body>
+  <!-- 🎉 Happy Birthday Heading -->
+  <h1 style="
+    position: absolute; 
+    top: 30px; /* adjust this value to move it further down if you like */
+    left: 53%;
+    transform: translateX(-50%);
+    color: #7a0324; 
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    ">
+    <strong>🎂 Happy Birthday My LOVE! 💖💗💓🎉</strong>
+    <p>May your day be as sweet and lovely as this</p>
+    <p>cake, My sweetest Bobbu! ❤🍰</p>
+  </h1>
+   <h2 style="
+    position: absolute; 
+    top: 520px; /* adjust this value to move it further down if you like */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #5911cd; 
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    ">
+    <strong>💖click on the cake🎉</strong>
+  </h2>
+    <!-- Layers -->
+    <div class="layer layer-top">
+      <div class="icing"></div>
+      <div class="drip drip1"></div>
+      <div class="drip drip2"></div>
+      <div class="drip drip3"></div>
+    </div>
+    <div class="layer layer-middle">
+      <div class="icing"></div>
+      <div class="drip drip1"></div>
+      <div class="drip drip2"></div>
+      <div class="drip drip3"></div>
+    </div>
+    <div class="layer layer-bottom">
+      <div class="icing"></div>
+      <div class="drip drip1"></div>
+      <div class="drip drip2"></div>
+      <div class="drip drip3"></div>
+    </div>
+
+    <!-- Plate -->
+    <div class="plate"></div>
+  </div>
+  <style>
+/* Floating Hearts */
+    .floating-hearts {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: -2;
+      overflow: hidden;
+    }
+    .floating-hearts .heart {
+      position: absolute;
+      width: 20px; height: 20px;
+      background: red;
+      clip-path: polygon(
+        50% 0%,
+        61% 18%,
+        82% 18%,
+        100% 35%,
+        100% 58%,
+        82% 76%,
+        50% 100%,
+        18% 76%,
+        0% 58%,
+        0% 35%,
+        18% 18%,
+        39% 18%
+      );
+      opacity: 0.8;
+      animation: float 20s linear infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(1); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+    /* Side Animations */
+    .side-animations .balloon,
+    .side-animations .star,
+    .side-animations .gift {
+      position: fixed;
+      z-index: -1;
+    }
+    .side-animations .balloon {
+      width: 50px; height: 70px;
+      background: radial-gradient(circle at 30% 30%, #ff69b4, #e91e63);
+      border-radius: 50%;
+      animation: floatSide 6s ease-in-out infinite alternate;
+    }
+    .side-animations .balloon.small { width: 35px; height: 50px; }
+    .side-animations .balloon.big { width: 70px; height: 90px; }
+    .side-animations .balloon.left { left: 20px; bottom: 50px; }
+    .side-animations .balloon.left.small { left: 60px; bottom: 120px; }
+    .side-animations .balloon.left.big { left: 40px; bottom: 250px; }
+    .side-animations .balloon.right { right: 20px; bottom: 50px; }
+    .side-animations .balloon.right.small { right: 60px; bottom: 120px; }
+    .side-animations .balloon.right.big { right: 40px; bottom: 250px; }
+    @keyframes floatSide {
+      from { transform: translateY(0); }
+      to { transform: translateY(-30px); }
+    }
+    .side-animations .star {
+      width: 30px; height: 30px;
+      background: gold;
+      clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+      );
+      animation: twinkle 4s ease-in-out infinite alternate;
+    }
+    .side-animations .star.left { left: 40px; top: 50px; }
+    .side-animations .star.left.lower { left: 70px; top: 250px; }
+    .side-animations .star.left.higher { left: 90px; top: 400px; }
+    .side-animations .star.right { right: 40px; top: 50px; }
+    .side-animations .star.right.lower { right: 70px; top: 250px; }
+    .side-animations .star.right.higher { right: 90px; top: 400px; }
+    @keyframes twinkle {
+      from { opacity: 0.5; transform: scale(1); }
+      to { opacity: 1; transform: scale(1.3) rotate(15deg); }
+    }
+    .side-animations .gift {
+      width: 40px; height: 40px;
+      background: #ff0000;
+      border: 3px solid gold;
+      border-radius: 5px;
+      animation: floatGift 5s ease-in-out infinite alternate;
+    }
+    .side-animations .gift.left { left: 30px; bottom: 40px; }
+    .side-animations .gift.right { right: 30px; bottom: 40px; }
+    @keyframes floatGift {
+      from { transform: translateY(0) rotate(0deg); }
+      to { transform: translateY(-20px) rotate(5deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Hearts Container -->
+  <div class="floating-hearts"></div>
+
+<!-- Birthday Music -->
+<audio id="birthdayMusic" autoplay loop>
+  <source src="happy-birthday-357371.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<script>
+  window.addEventListener('click', () => {
+    const music = document.getElementById('birthdayMusic');
+    music.play();
+  });
+</script>
+
+
+  <!-- Side Animations -->
+  <div class="side-animations">
+    <!-- Balloons -->
+    <div class="balloon left"></div>
+    <div class="balloon left small"></div>
+    <div class="balloon left big"></div>
+    <div class="balloon right"></div>
+    <div class="balloon right small"></div>
+    <div class="balloon right big"></div>
+    <!-- Stars -->
+    <div class="star left"></div>
+    <div class="star left lower"></div>
+    <div class="star left higher"></div>
+    <div class="star right"></div>
+    <div class="star right lower"></div>
+    <div class="star right higher"></div>
+    <!-- Gifts -->
+    <div class="gift left"></div>
+    <div class="gift right"></div>
+  </div>
+
+  <!-- JavaScript to Scatter Hearts -->
+  <script>
+    const container = document.querySelector('.floating-hearts');
+    const totalHearts = 50; // Number of hearts for a dense effect
+    for (let i = 0; i < totalHearts; i++) {
+      const heart = document.createElement('span');
+      heart.className = 'heart';
+      const size = 15 + Math.random() * 15; // Random size 15px-30px
+      heart.style.width = `${size}px`;
+heart.style.height = `${size}px`;
+heart.style.left = `${Math.random() * 100}%`;
+heart.style.animationDuration = `${15 + Math.random() * 10}s`;
+heart.style.animationDelay = `${Math.random() * 10}s`;
+
+      container.appendChild(heart);
+    }
+  </script>
+  <div class="floating-balloons"></div>
+  <script>
+    // === Flying Balloons Background ===
+document.addEventListener('DOMContentLoaded', () => {
+  const balloonContainer = document.querySelector('.floating-balloons');
+  const totalBalloons = 30; // Increase for more density
+
+  for (let i = 0; i < totalBalloons; i++) {
+    const balloon = document.createElement('span');
+    balloon.className = 'balloon';
+
+    // Random pastel color shades
+    const hue = Math.floor(Math.random() * 360);
+    balloon.style.setProperty('--balloonColor1', `hsl(${hue}, 70%, 80%)`);
+    balloon.style.setProperty('--balloonColor2', `hsl(${hue}, 70%, 60%)`);
+
+    // Random size
+    const size = 30 + Math.random() * 40; // 30px–70px
+    balloon.style.width = `${size}px`;
+    balloon.style.height = `${size * 1.3}px`;
+
+    // Random horizontal position
+    balloon.style.left = `${Math.random() * 100}%`;
+
+    // Random speed & delay
+    balloon.style.animationDuration = `${15 + Math.random() * 10}s`;
+    balloon.style.animationDelay = `${Math.random() * 10}s`;
+
+    balloonContainer.appendChild(balloon);
+  }
+});
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.1/dist/confetti.browser.min.js"></script>
+  <script>
+  const cake = document.getElementById('birthdayCake');
+
+  cake.addEventListener('click', () => {
+    // Simple burst
+    confetti({
+      particleCount: 150,
+      spread: 90,
+      origin: { y: 0.6 }
+    });
+
+    // Optional: Fire multiple bursts for extra fun!
+    const duration = 2 * 1000; // 2 seconds
+    const end = Date.now() + duration;
+
+    (function frame() {
+      confetti({
+        particleCount: 5,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 }
+      });
+      confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 }
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    })();
+  });
+</script>
+</body>
+</html>
